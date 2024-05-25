@@ -206,26 +206,11 @@ int logic2()
         default:
         break;
     }
-
-   if(height<=0 || width<=0  || x<=0 || y<=0)
-   {
-     height=19;
-     x=19;
-     y=19;
-     width=19;
-     --x;
-     --y;
-   }
-   else if(x>=19 || y>=19 || height>=19 || width>=19)
-   {
-    height=0;
-     x=0;
-     y=0;
-     width=0;
-     ++x;
-     ++y;
-   }
-    
+  // Check if the snake hits the wall
+    if (x >= width) x = 0;
+    else if (x < 0) x = width - 1;
+    if (y >= height) y = 0;
+    else if (y < 0) y = height - 1;
 
     for (int i = 0; i < ntail; i++)
         if (tx[i] == x && ty[i] == y)
